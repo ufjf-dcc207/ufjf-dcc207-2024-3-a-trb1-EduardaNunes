@@ -1,3 +1,8 @@
+:root{
+  --var-player-one-color:crimson;
+  --var-player-two-color:darkturquoise;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -22,6 +27,39 @@
 .GameButton{
   width: 100%;
   height: 100%;
+}
+
+.PlayerTurn{
+  width: 100%;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  gap: .8em;
+  margin: .8em;
+}
+
+.PlayerBox{
+  width: 20vh;
+  border-radius: 2px;
+}
+
+.PlayerOne{
+  background-color: var(--var-player-one-color);
+}
+.PlayerTwo{
+  background-color: var(--var-player-two-color);
+}
+
+button:hover{
+  border-color: var(--var-player-one-color);
+}
+
+.PlayerHover:hover{
+  border-color: var(--var-player-two-color);
+}
+
+.Disabled:hover{
+  border-color:black;
 }
 
 

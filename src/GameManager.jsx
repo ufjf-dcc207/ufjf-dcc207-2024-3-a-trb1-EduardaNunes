@@ -39,7 +39,6 @@ function GameWin(){
         isFinished = true
     }
 
-    console.log(isFinished)
     if(isFinished){
         disableAllButtons()
         console.log(`Jogador ${player}, venceu!`)
@@ -50,6 +49,6 @@ function disableAllButtons(){
     const buttons = document.querySelectorAll("button")
 
     buttons.forEach(button => {
-        button.disabled = true;
-    });
+        button.disabled = true
+    })
 }

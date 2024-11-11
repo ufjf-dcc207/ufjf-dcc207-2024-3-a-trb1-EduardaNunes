@@ -39,10 +39,24 @@ function GameButton({column, row}){
             console.log("Erro, player não existe")
             break
         }
-        e.target.disabled = true
+        DisableButton(e.target)
+        TogglePlayerColor()
     }
 
     return(
         <button data-column={column} data-row={row} className="GameButton" onClick={Play}>{playType}</button>
     )
+}
+
+function DisableButton(button){
+    button.disabled = true
+    button.classList.add("Disabled")
+}
+
+function TogglePlayerColor(){
+    const buttons = document.querySelectorAll("button")
+
+    buttons.forEach(button =>{
+        button.classList.toggle("PlayerHover")
+    })
 }
