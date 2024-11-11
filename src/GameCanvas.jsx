@@ -3,23 +3,23 @@ import { getPlayer, setPlayer, setGameMatriz} from './GameManager.jsx'
 
 export default function GameCanvas(){
     return(
-      <div className='GameCanvas'>
-        <GameButton></GameButton>
-        <GameButton></GameButton>
-        <GameButton></GameButton>
-  
-        <GameButton></GameButton>
-        <GameButton></GameButton>
-        <GameButton></GameButton>
-  
-        <GameButton></GameButton>
-        <GameButton></GameButton>
-        <GameButton></GameButton>
-      </div>
+        <div className='GameCanvas'>
+            <GameButton column={0} row={0} />
+            <GameButton column={1} row={0} />
+            <GameButton column={2} row={0} />
+
+            <GameButton column={0} row={1} />
+            <GameButton column={1} row={1} />
+            <GameButton column={2} row={1} />
+
+            <GameButton column={0} row={2} />
+            <GameButton column={1} row={2} />
+            <GameButton column={2} row={2} />
+        </div>
     )
 }
 
-function GameButton(){
+function GameButton({column, row}){
 
     const [playType, SetType] = useState(null)
 
@@ -27,14 +27,13 @@ function GameButton(){
         switch(getPlayer()){
         case 1:
             SetType("X")
+            setGameMatriz(e.target.dataset.column, e.target.dataset.row, "X")
             setPlayer(2)
-            //setGameMatriz(e.target.column, e.target.row, "X")
             break
         case 2:
             SetType("O")
+            setGameMatriz(e.target.dataset.column, e.target.dataset.row, "O")
             setPlayer(1)
-            //console.log(e.target.column)
-            //setGameMatriz(e.target.column, e.target.row, "O")
             break
         default:
             console.log("Erro, player não existe")
@@ -42,8 +41,7 @@ function GameButton(){
         }
     }
 
-    console.log("return")
     return(
-        <button className="GameButton" onClick={Play}>{playType}</button>
+        <button data-column={column} data-row={row} className="GameButton" onClick={Play}>{playType}</button>
     )
 }
