@@ -24,28 +24,14 @@ h1 {
 
 button {
   border-radius: 2px;
-  border: .5em solid transparent;
-  font-size: 1em;
+  border: .2em solid transparent;
+  font-size: 3em;
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
-  cursor: pointer;
   transition: border-color 0.25s;
 }
 
 button:disabled{
   color: var(--var-base-text-button-color);
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }

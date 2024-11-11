@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { getPlayer, setPlayer, setGameMatriz} from './GameManager.jsx'
+import { getPlayer, setPlayer, setGameMatriz, isFinished} from './GameManager.jsx'
 
 export default function GameCanvas(){
     return(
@@ -39,12 +39,15 @@ function GameButton({column, row}){
             console.log("Erro, player não existe")
             break
         }
-        DisableButton(e.target)
-        TogglePlayerColor()
+
+        if(!isFinished){
+            DisableButton(e.target)
+            TogglePlayerColor()
+        }
     }
 
     return(
-        <button data-column={column} data-row={row} className="GameButton" onClick={Play}>{playType}</button>
+        <button data-column={column} data-row={row} className="GameButton PlayerHoverOne" onClick={Play}>{playType}</button>
     )
 }
 
@@ -57,6 +60,7 @@ function TogglePlayerColor(){
     const buttons = document.querySelectorAll("button")
 
     buttons.forEach(button =>{
-        button.classList.toggle("PlayerHover")
+        button.classList.toggle("PlayerHoverOne")
+        button.classList.toggle("PlayerHoverTwo")
     })
 }

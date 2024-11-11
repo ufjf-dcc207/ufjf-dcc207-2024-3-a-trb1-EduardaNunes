@@ -50,16 +50,28 @@
   background-color: var(--var-player-two-color);
 }
 
-button:hover{
+.PlayerHoverOne:hover{
   border-color: var(--var-player-one-color);
+  cursor: pointer;
 }
 
-.PlayerHover:hover{
+.PlayerHoverTwo:hover{
   border-color: var(--var-player-two-color);
+  cursor: pointer;
 }
 
 .Disabled:hover{
-  border-color:black;
+  border-color:rgb(20, 20, 20);
+}
+
+.WinnerOne{
+  border-color: var(--var-player-one-color);
+  cursor: pointer;
+}
+
+.WinnerTwo{
+  border-color: var(--var-player-two-color);
+  cursor: pointer;
 }
 
 

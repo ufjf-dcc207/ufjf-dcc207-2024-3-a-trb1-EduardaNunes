@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import GameCanvas from './GameCanvas.jsx'
 import './App.css'
 
