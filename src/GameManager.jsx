@@ -3,22 +3,13 @@ let gameMatriz = [
     [null,null,null],
     [null,null,null]
   ]
-  
-let player = 1
-export let isFinished = false
-
-export function getPlayer(){
-    return player
-}
-
-export function setPlayer(newValue){
-    player = newValue
-}
 
 export function setGameMatriz(column, row, type){
     gameMatriz[column][row] = type
     GameWin()
 }
+export let player = 1
+export let isFinished = false
 
 function GameWin(){
 
@@ -49,6 +40,8 @@ function GameWin(){
         disableAllButtons()
         // adicionar animação de vitória
         console.log(`Jogador ${player}, venceu!`)
+    }else{
+        player = player == 1 ? 2 : 1
     }
 }
 
