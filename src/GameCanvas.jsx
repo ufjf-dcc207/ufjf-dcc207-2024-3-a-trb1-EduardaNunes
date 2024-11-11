@@ -2,19 +2,18 @@ import { useState } from 'react'
 import { player, setGameMatriz, isFinished} from './GameManager.jsx'
 
 export default function GameCanvas(){
+
+    let gameButtons = []
+
+    for(let row = 0; row < 3; row++){
+        for(let col = 0; col < 3; col++){
+            gameButtons.push(<GameButton column={col} row={row} />)
+        }
+    }
+
     return(
         <div className='GameCanvas'>
-            <GameButton column={0} row={0} />
-            <GameButton column={1} row={0} />
-            <GameButton column={2} row={0} />
-
-            <GameButton column={0} row={1} />
-            <GameButton column={1} row={1} />
-            <GameButton column={2} row={1} />
-
-            <GameButton column={0} row={2} />
-            <GameButton column={1} row={2} />
-            <GameButton column={2} row={2} />
+            {gameButtons}
         </div>
     )
 }
