@@ -39,6 +39,7 @@ function GameButton({column, row}){
             console.log("Erro, player não existe")
             break
         }
+        e.target.disabled = true
     }
 
     return(
