@@ -6,6 +6,7 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
+  --var-base-text-button-color:rgba(255, 255, 255, 0.87);
 } 
 
 body {
@@ -35,6 +36,10 @@ button {
 
 button:hover {
   border-color: #646cff;
+}
+
+button:disabled{
+  color: var(--var-base-text-button-color);
 }
 
 @media (prefers-color-scheme: light) {

@@ -16,8 +16,6 @@ export function setPlayer(newValue){
 
 export function setGameMatriz(column, row, type){
     gameMatriz[column][row] = type
-
-    console.log(gameMatriz)
     GameWin()
 }
 
@@ -43,6 +41,15 @@ function GameWin(){
 
     console.log(isFinished)
     if(isFinished){
+        disableAllButtons()
         console.log(`Jogador ${player}, venceu!`)
     }
+}
+
+function disableAllButtons(){
+    const buttons = document.querySelectorAll("button")
+
+    buttons.forEach(button => {
+        button.disabled = true;
+    });
 }
