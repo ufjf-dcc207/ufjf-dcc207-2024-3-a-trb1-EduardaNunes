@@ -4,9 +4,9 @@ import './App.css'
 export default function App() {
   return (
     <>
-        <Header></Header>
-        <PlayerTurn />
-        <GameCanvas></GameCanvas>
+        <Header/>
+        <PlayerTurn/>
+        <GameCanvas/>
     </>
   )
 }
