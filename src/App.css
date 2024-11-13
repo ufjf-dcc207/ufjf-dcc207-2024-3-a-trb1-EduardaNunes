@@ -69,9 +69,17 @@
   cursor: pointer;
 }
 
+.WinnerOne:hover{
+  border-color: var(--var-player-one-color);;
+}
+
 .WinnerTwo{
   border-color: var(--var-player-two-color);
   cursor: pointer;
+}
+
+.WinnerTwo:hover{
+  border-color: var(--var-player-two-color);;
 }
 
 
