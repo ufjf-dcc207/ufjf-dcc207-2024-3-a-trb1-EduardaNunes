@@ -22,6 +22,7 @@ export default function Board(){
     const [winPos, setWinPos] = useState(Array(3).fill(null))
     const [playType, SetType] = useState("X")
     const [borderStyle, setBorderStyle] = useState("PlayerHoverOne")
+    const [restartBtnClass, setRestartBtnClass] = useState("Hide")
 
     function handlePlay(place){ 
 
@@ -37,6 +38,7 @@ export default function Board(){
 
             if(isGameFinished){
                 setBorderStyle("Disabled")
+                setRestartBtnClass("RestartButton")
             }else{
                 const newPlayType = playType == "X" ? "O" : "X"
                 SetType(newPlayType)
@@ -69,6 +71,15 @@ export default function Board(){
         })
     }
 
+    function RestartGame(){
+        isGameFinished = false
+        setSquares(squares.fill(null))
+        setWinPos(winPos.fill(null))
+        SetType("X")
+        setBorderStyle("PlayerHoverOne")
+        setRestartBtnClass("Hide")
+    }
+
     let squareButtons = []
     for(let place = 0; place < 9; place++){
         // Marca os Quadrados Vencedores
@@ -82,7 +93,10 @@ export default function Board(){
 
     return(
         <div className='GameCanvas'>
-            {squareButtons}
+            <button className={restartBtnClass} onClick={RestartGame}>Restart</button>
+            <div className='Board'>
+                {squareButtons}
+            </div>
         </div>
     )
 }

@@ -14,6 +14,23 @@
 }
 
 .GameCanvas{
+  position: relative;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+}
+
+.RestartButton{
+  background-color: rgb(44, 44, 44);
+  cursor: pointer;
+  position: absolute;
+}
+
+.RestartButton:hover{
+  scale: 105%;
+}
+
+.Board{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -80,6 +97,10 @@
 
 .WinnerTwo:hover{
   border-color: var(--var-player-two-color);;
+}
+
+.Hide{
+  display: none;
 }
 
 
