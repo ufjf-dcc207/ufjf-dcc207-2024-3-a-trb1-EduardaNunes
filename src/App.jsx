@@ -1,12 +1,11 @@
-import GameCanvas from './GameCanvas.jsx'
-import './App.css'
+import Board from './GameCanvas.jsx'
 
 export default function App() {
   return (
     <>
         <Header/>
         <PlayerTurn/>
-        <GameCanvas/>
+        <Board/>
     </>
   )
 }
