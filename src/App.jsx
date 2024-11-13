@@ -1,5 +1,4 @@
 import Board from './GameCanvas.jsx'
-import './App.css'
 
 export default function App() {
   return (

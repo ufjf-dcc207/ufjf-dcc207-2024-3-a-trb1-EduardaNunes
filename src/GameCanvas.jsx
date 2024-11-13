@@ -1,13 +1,14 @@
 import { useState } from 'react'
+import './GameCanvas.css'
 
 let isGameFinished = false
 
-function Square({playType, boardFunction, borderStyle, isWinSquare}){
+function Square({playType, boardFunction, borderStyle}){
     const [isDisabled, setIsDisabled] = useState("")
 
     function handleClick(){
         boardFunction()
-        isWinSquare ? setIsDisabled("") : setIsDisabled("Disabled")
+        setIsDisabled("Disabled")
     }
 
     return(
@@ -70,12 +71,12 @@ export default function Board(){
 
     let squareButtons = []
     for(let place = 0; place < 9; place++){
-        console.log(winPos)
+        // Marca os Quadrados Vencedores
         if(place == winPos[0] || place == winPos[1] || place == winPos[2]){
             const winnerBorder = playType == "X" ? "WinnerOne" : "WinnerTwo"
-            squareButtons.push(<Square playType={squares[place]} boardFunction={(e) => handlePlay(place)} borderStyle={winnerBorder} isWinSquare={true}/>)
+            squareButtons.push(<Square playType={squares[place]} boardFunction={(e) => handlePlay(place)} borderStyle={winnerBorder}/>)
         }else{
-            squareButtons.push(<Square playType={squares[place]} boardFunction={(e) => handlePlay(place)} borderStyle={borderStyle} isWinSquare={false}/>)
+            squareButtons.push(<Square playType={squares[place]} boardFunction={(e) => handlePlay(place)} borderStyle={borderStyle}/>)
         }
     }
 
