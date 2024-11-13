@@ -1,63 +1,45 @@
 import { useState } from 'react'
 import { player, setGameMatriz, isFinished} from './GameManager.jsx'
 
-export default function GameCanvas(){
+function Square({playType, boardFunction, borderStyle}){
 
-    let gameButtons = []
+    return(
+        <button className={"GameButton " + borderStyle} onClick={boardFunction}>{playType}</button>
+    )
+}
 
-    for(let row = 0; row < 3; row++){
-        for(let col = 0; col < 3; col++){
-            gameButtons.push(<GameButton column={col} row={row} />)
+export default function Board(){
+
+    const [squares, setSquares] = useState(Array(9).fill(null))
+    const [playType, SetType] = useState("X")
+    const [borderStyle, setBorderStyle] = useState("PlayerHoverOne")
+
+    function handlePlay(place){
+        const newSquares = squares.slice()  
+
+        if(newSquares[place]){ // Verifica se o quadrado está vazio
+            return
+        }else{
+            newSquares[place] = playType
+            setSquares(newSquares)
+
+            const newPlayType = playType == "X" ? "O" : "X"
+            SetType(newPlayType)
+
+            const newBorderStyle = borderStyle == "PlayerHoverOne" ? "PlayerHoverTwo" : "PlayerHoverOne"
+            setBorderStyle(newBorderStyle)
         }
+
+    }
+
+    let squareButtons = []
+    for(let place = 0; place < 9; place++){
+        squareButtons.push(<Square playType={squares[place]} boardFunction={(e) => handlePlay(place)} borderStyle={borderStyle} />)
     }
 
     return(
         <div className='GameCanvas'>
-            {gameButtons}
+            {squareButtons}
         </div>
     )
-}
-
-function GameButton({column, row}){
-
-    const [playType, SetType] = useState(null)
-
-    function Play(e){
-        switch(player){
-        case 1:
-            SetType("X")
-            setGameMatriz(e.target.dataset.column, e.target.dataset.row, "X")
-            break
-        case 2:
-            SetType("O")
-            setGameMatriz(e.target.dataset.column, e.target.dataset.row, "O")
-            break
-        default:
-            console.log("Erro, player não existe")
-            break
-        }
-
-        if(!isFinished){
-            DisableButton(e.target)
-            TogglePlayerColor()
-        }
-    }
-
-    return(
-        <button data-column={column} data-row={row} className="GameButton PlayerHoverOne" onClick={Play}>{playType}</button>
-    )
-}
-
-function DisableButton(button){
-    button.disabled = true
-    button.classList.add("Disabled")
-}
-
-function TogglePlayerColor(){
-    const buttons = document.querySelectorAll("button")
-
-    buttons.forEach(button =>{
-        button.classList.toggle("PlayerHoverOne")
-        button.classList.toggle("PlayerHoverTwo")
-    })
 }
