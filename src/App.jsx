@@ -1,4 +1,4 @@
-import Board from './GameCanvas.jsx'
+import Board from './Board.jsx'
 
 export default function App() {
   return (

@@ -8,12 +8,12 @@ function Square({ playType, boardFunction, borderStyle }) {
 
   function handleClick() {
     boardFunction();
-    setIsDisabled("Disabled");
+    //setIsDisabled("Disabled");
   }
 
   return (
     <button
-      className={"GameButton " + borderStyle + " " + isDisabled}
+      className={`GameButton ${borderStyle} ${playType && "Disabled"}`}
       onClick={handleClick}
     >
       {playType}
@@ -83,6 +83,7 @@ export default function Board() {
       const winnerBorder = playType == "X" ? "WinnerOne" : "WinnerTwo";
       squareButtons.push(
         <Square
+          key={"place: " +place}
           playType={squares[place]}
           boardFunction={(e) => handlePlay(place)}
           borderStyle={winnerBorder}
@@ -91,6 +92,7 @@ export default function Board() {
     } else {
       squareButtons.push(
         <Square
+          key={"place: " + place}
           playType={squares[place]}
           boardFunction={(e) => handlePlay(place)}
           borderStyle={borderStyle}
@@ -101,8 +103,8 @@ export default function Board() {
 
   return (
         <>
-            <PlayerTurn type={playType}/>
-            <div className="GameCanvas">{squareButtons}</div>;
+          <PlayerTurn type={playType}/>
+          <div className="GameCanvas">{squareButtons}</div>;
         </>
   )
 }
