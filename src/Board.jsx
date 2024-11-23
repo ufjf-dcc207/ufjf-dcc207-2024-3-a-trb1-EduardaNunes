@@ -1,14 +1,14 @@
-import { useState } from "react";
-import "./GameCanvas.css";
+import { useState } from "react"
+import "./GameCanvas.css"
 
-let isGameFinished = false;
+let isGameFinished = false
 
 function Square({ playType, boardFunction, borderStyle }) {
-  const [isDisabled, setIsDisabled] = useState("");
+  const [isDisabled, setIsDisabled] = useState("")
 
   function handleClick() {
-    boardFunction();
-    //setIsDisabled("Disabled");
+    boardFunction()
+    //setIsDisabled("Disabled")
   }
 
   return (
@@ -18,35 +18,35 @@ function Square({ playType, boardFunction, borderStyle }) {
     >
       {playType}
     </button>
-  );
+  )
 }
 
 export default function Board() {
-  const [squares, setSquares] = useState(Array(9).fill(null));
-  const [winPos, setWinPos] = useState(Array(3).fill(null));
-  const [playType, SetType] = useState("X");
-  const [borderStyle, setBorderStyle] = useState("PlayerHoverOne");
+  const [squares, setSquares] = useState(Array(9).fill(null))
+  const [winPos, setWinPos] = useState(Array(3).fill(null))
+  const [playType, SetType] = useState("X")
+  const [borderStyle, setBorderStyle] = useState("PlayerHoverOne")
 
   function handlePlay(place) {
     if (squares[place] || isGameFinished) {
       // Verifica se o quadrado está vazio
-      return;
+      return
     } else {
-      const newSquares = squares.slice();
-      newSquares[place] = playType;
-      setSquares(newSquares);
+      const newSquares = squares.slice()
+      newSquares[place] = playType
+      setSquares(newSquares)
 
-      CheckGameVictory(newSquares);
+      CheckGameVictory(newSquares)
 
       if (isGameFinished) {
-        setBorderStyle("Disabled");
+        setBorderStyle("Disabled")
       } else {
-        const newPlayType = playType == "X" ? "O" : "X";
-        SetType(newPlayType);
+        const newPlayType = playType == "X" ? "O" : "X"
+        SetType(newPlayType)
 
         const newBorderStyle =
-          borderStyle == "PlayerHoverOne" ? "PlayerHoverTwo" : "PlayerHoverOne";
-        setBorderStyle(newBorderStyle);
+          borderStyle == "PlayerHoverOne" ? "PlayerHoverTwo" : "PlayerHoverOne"
+        setBorderStyle(newBorderStyle)
       }
     }
   }
@@ -61,7 +61,7 @@ export default function Board() {
       [2, 5, 8],
       [0, 4, 8], // diagonais
       [2, 4, 6],
-    ];
+    ]
 
     possibleWins.forEach((pos) => {
       if (
@@ -69,18 +69,18 @@ export default function Board() {
         squares[pos[0]] == squares[pos[1]] &&
         squares[pos[0]] == squares[pos[2]]
       ) {
-        console.log("Venceu");
-        isGameFinished = true;
-        setWinPos(pos);
+        console.log("Venceu")
+        isGameFinished = true
+        setWinPos(pos)
       }
-    });
+    })
   }
 
-  let squareButtons = [];
+  let squareButtons = []
   for (let place = 0; place < 9; place++) {
     // Marca os Quadrados Vencedores
     if (place == winPos[0] || place == winPos[1] || place == winPos[2]) {
-      const winnerBorder = playType == "X" ? "WinnerOne" : "WinnerTwo";
+      const winnerBorder = playType == "X" ? "WinnerOne" : "WinnerTwo"
       squareButtons.push(
         <Square
           key={"place: " +place}
@@ -88,7 +88,7 @@ export default function Board() {
           boardFunction={(e) => handlePlay(place)}
           borderStyle={winnerBorder}
         />
-      );
+      )
     } else {
       squareButtons.push(
         <Square
@@ -97,14 +97,14 @@ export default function Board() {
           boardFunction={(e) => handlePlay(place)}
           borderStyle={borderStyle}
         />
-      );
+      )
     }
   }
 
   return (
         <>
           <PlayerTurn type={playType}/>
-          <div className="GameCanvas">{squareButtons}</div>;
+          <div className="GameCanvas">{squareButtons}</div>
         </>
   )
 }
