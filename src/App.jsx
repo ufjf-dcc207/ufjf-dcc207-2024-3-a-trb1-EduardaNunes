@@ -1,10 +1,9 @@
-import Board from './GameCanvas.jsx'
+import Board from './Board.jsx'
 
 export default function App() {
   return (
     <>
         <Header/>
-        <PlayerTurn/>
         <Board/>
     </>
   )
@@ -13,14 +12,5 @@ export default function App() {
 function Header(){
   return(
     <h1>Super Tic Tac Toe</h1>
-  )
-}
-
-function PlayerTurn(){
-  return(
-    <div className='PlayerTurn'>
-      <div className='PlayerOne PlayerBox'><p>Jogador X</p></div>
-      <div className='PlayerTwo PlayerBox'><p>Jogador O</p></div>
-    </div>
   )
 }
