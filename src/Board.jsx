@@ -76,6 +76,16 @@ export default function Board() {
         setWinPos(pos)
       }
     })
+
+    let count = 0;
+    squares.forEach((square) => {
+      if(square != null){
+        count++;
+      }
+    })
+    if(count >= 9){
+      isGameFinished = true
+    }
   }
 
   let squareButtons = []
