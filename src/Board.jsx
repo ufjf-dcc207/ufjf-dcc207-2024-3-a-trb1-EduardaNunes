@@ -1,5 +1,6 @@
 import { useState } from "react"
 import "./GameCanvas.css"
+import PlayerTurn from "./PlayerTurn"
 
 let isGameFinished = false
 
@@ -46,6 +47,7 @@ export default function Board() {
     }
   }
 
+  // implementação do .map para encurtar o código
   const squareButtons = squares.map((square, place) => {
     const isWinningSquare = winPos.includes(place)
     const winnerBorder = playType === "X" ? "WinnerOne" : "WinnerTwo"
@@ -71,32 +73,11 @@ export default function Board() {
   )
 }
 
-function PlayerTurn({type}) {
-  return (
-    <div className="PlayerTurn">
-      {type === "X" ? (
-        <div className="PlayerOne PlayerBox">
-          <p>Jogador X</p>
-        </div>
-      ) : (
-        <div className="PlayerTwo PlayerBox">
-          <p>Jogador O</p>
-        </div>
-      )}
-    </div>
-  )
-}
-
 function CheckGameVictory(squares, setWinPos) {
   const possibleWins = [
-    [0, 1, 2], // horizontais
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6], // verticais
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8], // diagonais
-    [2, 4, 6],
+    [0, 1, 2], [3, 4, 5], [6, 7, 8], // Horizontais
+    [0, 3, 6], [1, 4, 7], [2, 5, 8], // Verticais
+    [0, 4, 8], [2, 4, 6],            // Diagonais
   ]
 
   possibleWins.forEach((pos) => {
