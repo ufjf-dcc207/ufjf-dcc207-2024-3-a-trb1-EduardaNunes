@@ -46,30 +46,19 @@ export default function Board() {
     }
   }
 
-  let squareButtons = []
-  for (let place = 0; place < 9; place++) {
-    // Marca os Quadrados Vencedores
-    if (place == winPos[0] || place == winPos[1] || place == winPos[2]) {
-      const winnerBorder = playType == "X" ? "WinnerOne" : "WinnerTwo"
-      squareButtons.push(
-        <Square
-          key={"place: " +place}
-          playType={squares[place]}
-          boardFunction={() => handlePlay(place)}
-          borderStyle={winnerBorder}
-        />
-      )
-    } else {
-      squareButtons.push(
-        <Square
-          key={"place: " + place}
-          playType={squares[place]}
-          boardFunction={(e) => handlePlay(place)}
-          borderStyle={borderStyle}
-        />
-      )
-    }
-  }
+  const squareButtons = squares.map((square, place) => {
+    const isWinningSquare = winPos.includes(place)
+    const winnerBorder = playType === "X" ? "WinnerOne" : "WinnerTwo"
+
+    return(
+      <Square
+        key={`place: ${place}`}
+        playType={square}
+        boardFunction={() => handlePlay(place)}
+        borderStyle={isWinningSquare ? winnerBorder : borderStyle}
+      />   
+    )
+  })
 
   return (
         <>
