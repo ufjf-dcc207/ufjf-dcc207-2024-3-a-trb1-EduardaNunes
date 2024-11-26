@@ -1,7 +1,7 @@
 import { useState } from "react"
 import "./GameCanvas.css"
-import PlayerTurn from "./PlayerTurn"
-import Square from "./Square"
+import PlayerTurn from "../PlayerTurn/PlayerTurn"
+import Square from "../Square/Square"
 
 let isGameFinished = false
 
