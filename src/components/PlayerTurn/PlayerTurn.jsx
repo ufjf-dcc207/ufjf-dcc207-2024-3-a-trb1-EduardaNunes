@@ -1,3 +1,5 @@
+import "./PlayerTurn.css"
+
 export default function PlayerTurn({type}) {
     return (
       <div className="PlayerTurn">

@@ -1,14 +1,15 @@
 import { useState } from "react"
-import "./GameCanvas.css"
+import "./Board.css"
 import PlayerTurn from "../PlayerTurn/PlayerTurn"
 import Square from "../Square/Square"
+import RestartButton from "../RestartButton/RestartButton"
 
 let isGameFinished = false
 
 export default function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null))
   const [winPos, setWinPos] = useState(Array(3).fill(null))
-  const [playType, SetType] = useState("X")
+  const [playType, setType] = useState("X")
   const [borderStyle, setBorderStyle] = useState("PlayerHoverOne")
   const [restartBtnClass, setRestartBtnClass] = useState("Hide")
 
@@ -28,7 +29,7 @@ export default function Board() {
         setRestartBtnClass("RestartButton")
       } else {
         const newPlayType = playType == "X" ? "O" : "X"
-        SetType(newPlayType)
+        setType(newPlayType)
 
         const newBorderStyle =
           borderStyle == "PlayerHoverOne" ? "PlayerHoverTwo" : "PlayerHoverOne"
@@ -56,7 +57,15 @@ export default function Board() {
         <>
           <PlayerTurn type={playType}/>
           <div className="GameCanvas">
-            <button className={restartBtnClass} onClick={() => RestartGame(squares, setSquares, winPos, setWinPos, SetType, setBorderStyle, setRestartBtnClass)}>Restart</button>
+            <RestartButton
+              setSquares={setSquares}
+              setWinPos={setWinPos}
+              setType={setType}
+              setBorderStyle={setBorderStyle}
+              setRestartBtnClass={setRestartBtnClass}
+              restartBtnClass={restartBtnClass}
+              isGameFinished={isGameFinished}
+            />
             <div className="Board">{squareButtons}</div>
           </div>
         </>
@@ -85,13 +94,4 @@ function CheckGameVictory(squares, setWinPos) {
   if(squares.every((square) => square != null)){
     isGameFinished = true;
   }
-}
-
-function RestartGame(squares, setSquares, winPos, setWinPos, SetType, setBorderStyle, setRestartBtnClass){
-  isGameFinished = false
-  setSquares(squares.fill(null))
-  setWinPos(winPos.fill(null))
-  SetType("X")
-  setBorderStyle("PlayerHoverOne")
-  setRestartBtnClass("Hide")
 }

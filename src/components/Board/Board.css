@@ -20,16 +20,6 @@
   justify-content: center;
 }
 
-.RestartButton{
-  background-color: rgb(44, 44, 44);
-  cursor: pointer;
-  position: absolute;
-}
-
-.RestartButton:hover{
-  scale: 105%;
-}
-
 .Board{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -44,27 +34,6 @@
 .GameButton{
   width: 100%;
   height: 100%;
-}
-
-.PlayerTurn{
-  width: 100%;
-  display: flex;
-  place-items: center;
-  justify-content: center;
-  gap: .8em;
-  margin: .8em;
-}
-
-.PlayerBox{
-  width: 20vh;
-  border-radius: 2px;
-}
-
-.PlayerOne{
-  background-color: var(--var-player-one-color);
-}
-.PlayerTwo{
-  background-color: var(--var-player-two-color);
 }
 
 .PlayerHoverOne:hover{

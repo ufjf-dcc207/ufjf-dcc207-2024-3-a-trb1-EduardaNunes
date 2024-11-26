@@ -1,4 +1,5 @@
 import Board from '../Board/Board.jsx'
+import Header from '../Header/Header.jsx'
 
 export default function App() {
   return (
@@ -6,11 +7,5 @@ export default function App() {
         <Header/>
         <Board/>
     </>
-  )
-}
-
-function Header(){
-  return(
-    <h1>Super Tic Tac Toe</h1>
   )
 }

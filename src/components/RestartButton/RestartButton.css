@@ -1,0 +1,10 @@
+.RestartButton{
+    background-color: rgb(44, 44, 44);
+    cursor: pointer;
+    position: absolute;
+  }
+  
+  .RestartButton:hover{
+    scale: 105%;
+  }
+  

@@ -6,7 +6,6 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-  --var-base-text-button-color:rgba(255, 255, 255, 0.87);
 } 
 
 body {
@@ -15,23 +14,4 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 2px;
-  border: .2em solid transparent;
-  font-size: 3em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  transition: border-color 0.25s;
-}
-
-button:disabled{
-  color: var(--var-base-text-button-color);
 }
