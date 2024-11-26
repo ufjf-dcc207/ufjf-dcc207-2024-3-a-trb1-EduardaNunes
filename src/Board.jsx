@@ -1,19 +1,9 @@
 import { useState } from "react"
 import "./GameCanvas.css"
 import PlayerTurn from "./PlayerTurn"
+import Square from "./Square"
 
 let isGameFinished = false
-
-function Square({ playType, boardFunction, borderStyle }) {
-  return (
-    <button
-      className={`GameButton ${borderStyle} ${playType && "Disabled"}`}
-      onClick={boardFunction}
-    >
-      {playType}
-    </button>
-  )
-}
 
 export default function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null))
