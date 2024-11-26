@@ -55,7 +55,7 @@ export default function Board() {
         <Square
           key={"place: " +place}
           playType={squares[place]}
-          boardFunction={(e) => handlePlay(place)}
+          boardFunction={() => handlePlay(place)}
           borderStyle={winnerBorder}
         />
       )
@@ -122,14 +122,8 @@ function CheckGameVictory(squares, setWinPos) {
     }
   })
 
-  let count = 0;
-  squares.forEach((square) => {
-    if(square != null){
-      count++;
-    }
-  })
-  if(count >= 9){
-    isGameFinished = true
+  if(squares.every((square) => square != null)){
+    isGameFinished = true;
   }
 }
 
