@@ -4,7 +4,13 @@ import PlayerTurn from "../PlayerTurn/PlayerTurn"
 import Square from "../Square/Square"
 import RestartButton from "../RestartButton/RestartButton"
 
-let isGameFinished = false
+let isGameFinished = false // Preciso transformar isso em um useState
+
+// Gambiarra temporária
+
+export function setGameFinished(){
+  isGameFinished = false;
+}
 
 export default function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null))

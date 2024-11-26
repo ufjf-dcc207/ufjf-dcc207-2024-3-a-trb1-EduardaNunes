@@ -1,9 +1,10 @@
 import "./RestartButton.css"
+import { setGameFinished } from "../Board/Board"
 
 export default function RestartButton({setSquares, setWinPos, setType, setBorderStyle, setRestartBtnClass, restartBtnClass, isGameFinished}){
 
     function RestartGame(){
-        isGameFinished = false
+        setGameFinished()
         setSquares(Array(9).fill(null))
         setWinPos(Array(3).fill(null))
         setType("X")
