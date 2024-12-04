@@ -7,3 +7,10 @@ button {
     background-color: #1a1a1a;
     transition: border-color 0.25s;
   }
+
+button[data-player = "X"]{
+  border-color: blue;
+}
+button[data-isWinner = "true"]{
+  border-color:gold ;
+}
