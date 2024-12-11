@@ -82,7 +82,6 @@ function checkGameVictory(game) {
         game.squares[pos[0]] == game.squares[pos[1]] &&
         game.squares[pos[0]] == game.squares[pos[2]]
       ) {
-        console.log("Venceu");
         game.isGameFinished = true;
         game.winPos = k;
         throw new Error();
