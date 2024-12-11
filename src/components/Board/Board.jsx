@@ -26,7 +26,10 @@ export default function Board() {
       newGame.squares[place] = newGame.player;
 
       checkGameVictory(newGame);
-      newGame.player = newGame.player === "X" ? "O" : "X";
+      
+      if(!newGame.isGameFinished){
+        newGame.player = newGame.player === "X" ? "O" : "X";
+      }
       setGame(newGame);
     }
   }
