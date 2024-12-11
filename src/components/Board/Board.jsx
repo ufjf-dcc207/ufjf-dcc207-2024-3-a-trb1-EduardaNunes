@@ -15,25 +15,11 @@ const POSSIBLE_WINS = [
   [2, 4, 6], // Diagonais
 ];
 
-let isGameFinished = false; // Preciso transformar isso em um useState
-
-// Gambiarra temporária
-
-export function setGameFinished() {
-  isGameFinished = false;
-}
-
 export default function Board() {
   const [game, setGame] = useState(newGame());
-  //const [squares, setSquares] = useState()
-  //const [winPos, setWinPos] = useState(Array(3).fill(null));
-  //const [playType, setType] = useState("X");
-  //const [borderStyle, setBorderStyle] = useState("PlayerHoverOne");
-  //const [restartBtnClass, setRestartBtnClass] = useState("Hide");
 
   function handlePlay(place) {
-    if (game.squares[place] || isGameFinished) {
-      // Verifica se o quadrado está vazio
+    if (game.squares[place] || game.isGameFinished) {
       return;
     } else {
       const newGame = structuredClone(game);
@@ -42,20 +28,6 @@ export default function Board() {
       checkGameVictory(newGame);
       newGame.player = newGame.player === "X" ? "O" : "X";
       setGame(newGame);
-
-      /*
-      if (isGameFinished) {
-        setBorderStyle("Disabled");
-        setRestartBtnClass("RestartButton");
-      } else {
-        const newPlayType = playType == "X" ? "O" : "X";
-        setType(newPlayType);
-
-        const newBorderStyle =
-          borderStyle == "PlayerHoverOne" ? "PlayerHoverTwo" : "PlayerHoverOne";
-        setBorderStyle(newBorderStyle);
-      }
-      */
     }
   }
 
@@ -77,8 +49,6 @@ export default function Board() {
     if(game.isGameFinished){
       isWinner = POSSIBLE_WINS[game.winPos].includes(place);
     }
-    //const isWinningSquare = winPos.includes(place);
-    //const winnerBorder = playType === "X" ? "WinnerOne" : "WinnerTwo";
 
     return (
       <Square
@@ -98,7 +68,7 @@ export default function Board() {
           onRestartClick={restart}
           isGameFinished={game.isGameFinished}
         />
-        <div className="Board" disabled={!game.isGameFinished}>{squareButtons}</div>
+        <div className="Board" data-player={game.player} disabled={!game.isGameFinished}>{squareButtons}</div>
       </div>
     </>
   );

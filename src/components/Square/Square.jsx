@@ -1,6 +1,7 @@
 import "./Square.css"
 
 export default function Square({ player, boardFunction, isWinner }) {
+  console.log(player !== null)
     return (
       <button
         className={`GameButton`}

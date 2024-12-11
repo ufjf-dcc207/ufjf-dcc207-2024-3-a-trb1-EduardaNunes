@@ -31,45 +31,4 @@
   height: 50vh;
 }
 
-.GameButton{
-  width: 100%;
-  height: 100%;
-}
-
-.PlayerHoverOne:hover{
-  border-color: var(--var-player-one-color);
-  cursor: pointer;
-}
-
-.PlayerHoverTwo:hover{
-  border-color: var(--var-player-two-color);
-  cursor: pointer;
-}
-
-.Disabled:hover{
-  border-color:rgb(20, 20, 20);
-}
-
-.WinnerOne{
-  border-color: var(--var-player-one-color);
-  cursor: pointer;
-}
-
-.WinnerOne:hover{
-  border-color: var(--var-player-one-color);;
-}
-
-.WinnerTwo{
-  border-color: var(--var-player-two-color);
-  cursor: pointer;
-}
-
-.WinnerTwo:hover{
-  border-color: var(--var-player-two-color);;
-}
-
-.Hide{
-  display: none;
-}
-
 
