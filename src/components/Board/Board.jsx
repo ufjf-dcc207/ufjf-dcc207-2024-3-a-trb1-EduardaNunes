@@ -47,7 +47,8 @@ export default function Board() {
   const squareButtons = game.squares.map((square, place) => {
     let isWinner = false;
     if(game.isGameFinished){
-      isWinner = POSSIBLE_WINS[game.winPos].includes(place);
+      console.log(game.winPos)
+      isWinner = game.winPos !== null ? POSSIBLE_WINS[game.winPos].includes(place) : false;
     }
 
     return (
