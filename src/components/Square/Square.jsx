@@ -1,12 +1,16 @@
 import "./Square.css"
 
-export default function Square({ playType, boardFunction, borderStyle }) {
+export default function Square({ player, boardFunction, isWinner }) {
+  console.log(player !== null)
     return (
       <button
-        className={`GameButton ${borderStyle} ${playType && "Disabled"}`}
+        className={`GameButton`}
         onClick={boardFunction}
+        data-isWinner={isWinner}
+        data-player={player}
+        disabled={player !== null}
       >
-        {playType}
+        {player}
       </button>
     )
   }
