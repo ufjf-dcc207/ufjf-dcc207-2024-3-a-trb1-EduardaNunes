@@ -26,31 +26,34 @@ export default function Board() {
       newGame.squares[place] = newGame.player;
 
       checkGameVictory(newGame);
-      
-      if(!newGame.isGameFinished){
+
+      if (!newGame.isGameFinished) {
         newGame.player = newGame.player === "X" ? "O" : "X";
       }
       setGame(newGame);
     }
   }
 
-  function newGame(){
+  function newGame() {
     return {
       squares: Array(9).fill(null),
       isGameFinished: false,
       winPos: null,
       player: "X",
-    }
+    };
   }
-  function restart(){
+  function restart() {
     setGame(newGame());
   }
 
   // implementação do .map para encurtar o código
   const squareButtons = game.squares.map((square, place) => {
     let isWinner = false;
-    if(game.isGameFinished){
-      isWinner = game.winPos !== null ? POSSIBLE_WINS[game.winPos].includes(place) : false // adicionei para evitar bug no empate
+    if (game.isGameFinished) {
+      isWinner =
+        game.winPos !== null
+          ? POSSIBLE_WINS[game.winPos].includes(place)
+          : false; // adicionei para evitar bug no empate
     }
 
     return (
@@ -71,7 +74,13 @@ export default function Board() {
           onRestartClick={restart}
           isGameFinished={game.isGameFinished}
         />
-        <div className="Board" data-player={game.player} disabled={!game.isGameFinished}>{squareButtons}</div>
+        <div
+          className="Board"
+          data-player={game.player}
+          disabled={!game.isGameFinished}
+        >
+          {squareButtons}
+        </div>
       </div>
     </>
   );
@@ -91,7 +100,7 @@ function checkGameVictory(game) {
       }
     });
   } catch (e) {
-    return
+    return;
   }
 
   if (game.squares.every((square) => square != null)) {
