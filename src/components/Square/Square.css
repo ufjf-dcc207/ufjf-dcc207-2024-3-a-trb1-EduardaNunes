@@ -1,0 +1,42 @@
+:root{
+  --player-x-color:crimson;
+  --player-o-color:darkturquoise;
+  --disabled:rgb(20, 20, 20);
+}
+
+.GameButton {
+  border-radius: 2px;
+  border: .2em solid transparent;
+  font-size: 3em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  transition: border-color 0.25s;
+  width: 100%;
+  height: 100%;
+}
+
+/* Mostra que é a vez do jogador X [não deixa "jogar" no quadrado já preenchido] */
+.Board[data-player="X"]>.GameButton:not([disabled]):hover{
+  border-color: var(--player-x-color);
+}
+
+/* Mostra que é a vez do jogador O [não deixa "jogar" no quadrado já preenchido] */
+.Board[data-player="O"]>.GameButton:not([disabled]):hover{
+  border-color: var(--player-o-color);
+}
+
+/* Se tiver desabilitado */
+.GameButton[disabled]:hover{
+  border-color: var(--disabled);
+}
+
+/*Se o Jogador X Tiver Ganhado Marca a Linha Vencedora*/
+.GameButton[data-iswinner = "true"][data-player = "X"]{
+  border-color:var(--player-x-color);
+}
+
+/*Se o Jogador O Tiver Ganhado Marca a Linha Vencedora*/
+.GameButton[data-iswinner = "true"][data-player = "O"]{
+  border-color:var(--player-o-color);
+}

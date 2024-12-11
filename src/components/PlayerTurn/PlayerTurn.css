@@ -1,0 +1,20 @@
+.PlayerTurn{
+    width: 100%;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    gap: .8em;
+    margin: .8em;
+  }
+  
+  .PlayerBox{
+    width: 20vh;
+    border-radius: 2px;
+  }
+  
+  .PlayerOne{
+    background-color: var(--var-player-one-color);
+  }
+  .PlayerTwo{
+    background-color: var(--var-player-two-color);
+  }
