@@ -21,17 +21,16 @@ export default function Board() {
   function handlePlay(place) {
     if (game.squares[place] || game.isGameFinished) {
       return;
-    } else {
-      const newGame = structuredClone(game);
-      newGame.squares[place] = newGame.player;
-
-      checkGameVictory(newGame);
-
-      if (!newGame.isGameFinished) {
-        newGame.player = newGame.player === "X" ? "O" : "X";
-      }
-      setGame(newGame);
     }
+    const newGame = structuredClone(game);
+    newGame.squares[place] = newGame.player;
+
+    checkGameVictory(newGame);
+
+    if (!newGame.isGameFinished) {
+      newGame.player = newGame.player === "X" ? "O" : "X";
+    }
+    setGame(newGame);
   }
 
   function newGame() {
